@@ -1,17 +1,11 @@
 import pandas as pd
 import pymongo
-import urllib
 import streamlit as st
 from datetime import datetime
 
 @st.cache(allow_output_mutation=True)
-def get_mongo_client(config):
+def get_mongo_client():
     """Get the mongo client and store it in cache.
-
-        Params
-        ------
-        config : Config
-            Configuration object containing email details.
         
         Returns
         -------
