@@ -10,7 +10,6 @@ from utils.config import Config
 
 warnings.filterwarnings('ignore')
 
-config = Config()
 
 secrets_dict = st.secrets
 
@@ -18,6 +17,7 @@ if not os.path.isfile("config.yaml"):
     with open("config.yaml", "w") as outfile:
         yaml.dump(secrets_dict, outfile, default_flow_style=False)
 
+config = Config()
 
 client = get_mongo_client(config)
 database = client.nutridb
