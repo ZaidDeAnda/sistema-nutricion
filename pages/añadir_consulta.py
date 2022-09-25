@@ -14,14 +14,18 @@ def actualizar_valores():
     else: 
         return False
 
-def activar_actualiazr():
+def activar_actualizar():
     st.session_state["actualizar"] = True
 
 client = get_mongo_client()
 database = client.nutridb
 collection = database.consultas
 
-st.header("Pacientes registrados")
+st.header("Sistema de seguimiento")
+
+st.write("En esta página primero puedes consultar todos tus pacientes junto con la fecha de su última consulta ⬇")
+
+st.subheader("Pacientes registrados")
 
 cursor = collection.find({})
 df = create_dataframe_from_cursor(cursor)
@@ -32,9 +36,12 @@ unique_df = unique_df["fecha"]
 unique_df = unique_df.rename("Fecha de ultima consulta")
 st.dataframe(unique_df)
 
+st.write("""Luego, aquí puedes seleccionar a cuál paciente le actualizarás los datos para realizar seguimiento
+        , y finalmente presionar el botón de comparar valores para obtener una descripción detallada""")
+
 paciente_seleccionado = st.selectbox(label="Seleccione el paciente" ,options=unique_df.index)
 
-actualizar = st.button(label="Actualizar datos", on_click=activar_actualiazr)
+actualizar = st.button(label="Actualizar datos", on_click=activar_actualizar)
 
 if actualizar_valores():
 
