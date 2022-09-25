@@ -8,7 +8,7 @@ from utils.database import change_date_format
 warnings.filterwarnings('ignore')
 
 
-client = get_mongo_client()
+client = get_mongo_client(secrets_dict=st.secrets)
 database = client.nutridb
 collection = database.consultas
 
