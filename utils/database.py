@@ -15,7 +15,8 @@ def get_mongo_client(secrets_dict):
     user = secrets_dict["db_user"]
     password = secrets_dict["db_pwd"]
     cluster = secrets_dict["db_cluster"]
-    return pymongo.MongoClient(f"mongodb+srv://{user}:{password}@{cluster}/?retryWrites=true&w=majority")
+    client = pymongo.MongoClient(f"mongodb+srv://{user}:{password}@{cluster}/?retryWrites=true&w=majority")
+    return client
 
 def create_dataframe_from_cursor(cursor):
     """Transform the cursor from mongo into a dataframe
