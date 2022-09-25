@@ -3,7 +3,6 @@ import pymongo
 import streamlit as st
 from datetime import datetime
 
-@st.cache
 def get_mongo_client(config):
     """Get the mongo client and store it in cache.
         
