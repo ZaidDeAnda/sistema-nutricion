@@ -3,7 +3,7 @@ import pymongo
 import streamlit as st
 from datetime import datetime
 
-def get_mongo_client(config):
+def get_mongo_client():
     """Get the mongo client and store it in cache.
         
         Returns
@@ -11,10 +11,9 @@ def get_mongo_client(config):
         client
             The mongo client connected to the database.
         """
-    db_mongo = config.get_config()
-    user = db_mongo["db_user"]
-    password = db_mongo["db_pwd"]
-    cluster = db_mongo["db_cluster"]
+    user = st.secrets["db_user"]
+    password = st.secrets["db_pwd"]
+    cluster = st.secrets["db_cluster"]
     client = pymongo.MongoClient(f"mongodb+srv://{user}:{password}@{cluster}/?retryWrites=true&w=majority")
     return client
 

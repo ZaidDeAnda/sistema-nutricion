@@ -1,7 +1,4 @@
-from enum import unique
-from turtle import onclick
 import streamlit as st
-import pymongo
 import pandas as pd
 
 from utils.database import change_dict_format, get_mongo_client
@@ -10,7 +7,6 @@ from utils.database import change_date_format
 from utils.nutrition import revisar_grasa
 from utils.nutrition import revisar_musculo
 from utils.nutrition import revisar_IMC
-from utils.config import Config
 
 def actualizar_valores():
     if 'actualizar' in st.session_state.keys():
@@ -21,9 +17,7 @@ def actualizar_valores():
 def activar_actualiazr():
     st.session_state["actualizar"] = True
 
-config = Config()
-
-client = get_mongo_client(config)
+client = get_mongo_client()
 database = client.nutridb
 collection = database.consultas
 
