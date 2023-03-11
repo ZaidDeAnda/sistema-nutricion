@@ -141,6 +141,12 @@ if actualizar_valores():
         else:
             st.success("Tu IMC es normal! 😁")
 
+        paciente["IMC"] = float(paciente["peso"]) / (float(paciente["altura"]) * float(paciente["altura"]))
+
+        collection.insert_one(paciente)
+
+        st.success("Paciente registrado correctamente")
+
 
 
       
