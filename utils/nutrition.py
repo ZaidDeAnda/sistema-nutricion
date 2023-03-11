@@ -34,7 +34,7 @@ def revisar_grasa(new_data_dict):
             valor_normal = porcentajes_dict["grasa"][sexo][edades]["normal"]
         grasa_dict["faltante"] = -(float(actual) - float(valor_normal))
         if grasa_dict["faltante"] > 0:
-            grasa_dict["direccion"] = "subir"
+            grasa_dict[""] = "subir"
         if grasa_dict["faltante"] < 0:
             grasa_dict["direccion"] = "bajar"
         grasa_dict["faltante_kg"] = abs(float(actual) - float(valor_normal))/100 * float(new_data_dict["peso"])
@@ -77,6 +77,8 @@ def revisar_musculo(new_data_dict):
         musculo_dict["faltante"] = -(float(actual) - float(valor_normal))
         if musculo_dict["faltante"] > 0:
             musculo_dict["direccion"] = "subir"
+        else:
+            musculo_dict["direccion"] = "bajar"
         musculo_dict["faltante_kg"] = abs(float(actual) - float(valor_normal))/100 * float(new_data_dict["peso"])
 
     return musculo_dict
