@@ -49,6 +49,8 @@ if actualizar_valores():
 
     paciente = {}
 
+    paciente["nombre"] = paciente_seleccionado
+
     paciente["sexo"] = df.loc[df["nombre"] == paciente_seleccionado].iloc[0]["sexo"]
 
     paciente["fecha"] = str(st_cols_header[0].date_input("Fecha de la consulta"))
