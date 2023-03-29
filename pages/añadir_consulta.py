@@ -1,7 +1,4 @@
-from enum import unique
-from turtle import onclick
 import streamlit as st
-import pymongo
 import pandas as pd
 
 from utils.database import change_dict_format, get_mongo_client
@@ -10,7 +7,6 @@ from utils.database import change_date_format
 from utils.nutrition import revisar_grasa
 from utils.nutrition import revisar_musculo
 from utils.nutrition import revisar_IMC
-from utils.config import Config
 
 def actualizar_valores():
     if 'actualizar' in st.session_state.keys():
@@ -18,16 +14,18 @@ def actualizar_valores():
     else: 
         return False
 
-def activar_actualiazr():
+def activar_actualizar():
     st.session_state["actualizar"] = True
 
-config = Config()
-
-client = get_mongo_client(config)
+client = get_mongo_client()
 database = client.nutridb
 collection = database.consultas
 
-st.header("Pacientes registrados")
+st.header("Sistema de seguimiento")
+
+st.write("En esta página primero puedes consultar todos tus pacientes junto con la fecha de su última consulta ⬇")
+
+st.subheader("Pacientes registrados")
 
 cursor = collection.find({})
 df = create_dataframe_from_cursor(cursor)
@@ -38,15 +36,20 @@ unique_df = unique_df["fecha"]
 unique_df = unique_df.rename("Fecha de ultima consulta")
 st.dataframe(unique_df)
 
+st.write("""Luego, aquí puedes seleccionar a cuál paciente le actualizarás los datos para realizar seguimiento
+        , y finalmente presionar el botón de comparar valores para obtener una descripción detallada""")
+
 paciente_seleccionado = st.selectbox(label="Seleccione el paciente" ,options=unique_df.index)
 
-actualizar = st.button(label="Actualizar datos", on_click=activar_actualiazr)
+actualizar = st.button(label="Actualizar datos", on_click=activar_actualizar)
 
 if actualizar_valores():
 
     st_cols_header = st.columns(2)
 
     paciente = {}
+
+    paciente["nombre"] = paciente_seleccionado
 
     paciente["sexo"] = df.loc[df["nombre"] == paciente_seleccionado].iloc[0]["sexo"]
 
@@ -139,6 +142,12 @@ if actualizar_valores():
 
         else:
             st.success("Tu IMC es normal! 😁")
+
+        paciente["IMC"] = float(paciente["peso"]) / (float(paciente["altura"]) * float(paciente["altura"]))
+
+        collection.insert_one(paciente)
+
+        st.success("Paciente registrado correctamente")
 
 
 

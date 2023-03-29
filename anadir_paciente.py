@@ -1,21 +1,24 @@
 import streamlit as st
+import os
+import yaml
 
 import warnings
 
 from utils.database import get_mongo_client
-from utils.database import create_dataframe_from_cursor
 from utils.database import change_date_format
 from utils.config import Config
 
 warnings.filterwarnings('ignore')
 
-config = Config()
-
-client = get_mongo_client(config)
+client = get_mongo_client()
 database = client.nutridb
 collection = database.consultas
 
-st.header("Datos del paciente")
+st.header("Sistema de seguimiento.")
+
+st.write("Esta página sirve para añadir pacientes al sistema la primera vez que recibirán una consulta.")
+
+st.subheader("Datos del paciente")
 
 paciente = {}
 
