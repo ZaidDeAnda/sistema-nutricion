@@ -3,3 +3,4 @@ streamlit
 pymongo
 pyyaml
 dnspython
+plotly
