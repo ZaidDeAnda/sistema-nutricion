@@ -22,6 +22,8 @@ if paciente_seleccionado:
 
     paciente_df = df.loc[df['nombre'] == paciente_seleccionado]
 
+    st.write(paciente_df)
+
     cols = st.columns(2)
 
     cols[0].subheader("Peso")
