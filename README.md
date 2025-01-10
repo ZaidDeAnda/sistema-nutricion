@@ -1,117 +1,136 @@
-# Project Title
+# Sistema de Nutrición
 
-**Sistema de Nutrición**
+## Tabla de Contenidos
 
-## What does your application do and why did you use the technologies you used?
-
-Sistema de Nutrición is a comprehensive nutrition management application designed for nutritionists. It allows professionals to:
-
-- Register new patients.
-- Store and update patient parameters, including weight, fat, muscle, BMI, and other metrics.
-- Compare historical data to current records.
-- Classify patients based on their recorded percentages into high, medium, and low ranges of fat, muscle, etc.
-
-The application is built using Python with libraries such as:
-
-- **Streamlit**: For creating an interactive and user-friendly web interface.
-- **pymongo**: For seamless interaction with the MongoDB database.
-- **yaml**: For configuration management.
-- **datetime**: To handle timestamps for records.
-- **pandas**: For data manipulation and analysis.
-- **plotly express**: For creating interactive visualizations.
-
-The database is hosted on MongoDB Atlas for robust, not relational and scalable cloud-based storage.
-
-### Features to implement in the future
-
-- A page to register new patients with their basic information and initial weight status.
-- A page to update patient records, including:
-  - Displaying a table of all registered patients.
-  - Allowing selection of a patient to update their weight and metrics.
-  - Displaying a comparison between the last and the newly entered record.
-  - Indicators to show if a patient’s values are within recommended ranges.
-- Enhancing the historical page to provide more detailed progress analysis and trend visualizations.
+- [Acerca del Proyecto](#acerca-del-proyecto)
+- [Contenido del Proyecto](#contenido-del-proyecto)
+- [Desarrollo del Proyecto](#desarrollo-del-proyecto)
+  - [Prerequisitos](#prerequisitos)
+  - [Iniciando](#iniciando) 
+  - [Instalación](#instalación)   
+  - [Ejecución](#ejecución)  
+- [Uso del proyecto](#uso-del-proyecto)
+- [Contacto](#contacto)
+- [Licencia](#licencia)
 
 ---
 
-## Project Description
+## Acerca del Proyecto
 
-Sistema de Nutrición was developed to streamline the work of nutritionists by providing an all-in-one platform for patient management and progress tracking. The application addresses the need for an efficient, organized, and visually appealing way to handle patient data.
+El Sistema de Nutrición es un proyecto que desarrolla una aplicación de gestión nutricional enfocada para nutriólogos. 
 
-Sistema de Nutrición was developed to address the challenges faced by nutritionists in managing patient data effectively. The motivation behind the project was to simplify the process of tracking and analyzing patient progress while providing an intuitive interface and insightful visualizations. The application eliminates the need for manual record-keeping and reduces errors, making it a reliable tool for professionals.
+Fue desarrollado para optimizar el trabajo de los nutriólogos al proporcionar una plataforma que abarque todas las funcionalidades primordiales de gestión y seguimiento de pacientes en uno. La aplicación aborda la necesidad de manejar datos de manera ágil, organizada y visualmente atractiva.
+
+La aplicación le permite a los profesionales:
+
+- Registrar nuevos pacientes.
+- Almacenar y actualizar el expediente de pacientes, incluyendo peso, grasa, músculo, IMC y otros parámetros.
+- Comparar datos históricos con registros actuales.
+- Clasificar a los pacientes en base a sus porcentajes de parámetros como altos, medios y bajos.
+- Visualizar el historial de los pacientes para monitorear su progreso a lo largo del tiempo.
+
+La aplicación está desarrollada con Python utilizando Streamlit como base para la interfaz web y MongoDB Atlas para el almacenamiento de la base de datos en la nube.
+
+## Contenido del proyecto
+
+El proyecto ofrece las siguientes tres páginas con sus respectivas funcionalidades:
+- Una página para registrar nuevos pacientes.
+- Una página para actualizar los expedientes de pacientes, la cual permite:
+  - Mostrar una tabla con todos los pacientes registrados.
+  - Permitir la selección de un paciente para actualizar sus parámetros.
+  - Mostrar una comparación entre el último registro y el recién ingresado.
+  - Indicadores que clasifiquen los parámetros de un paciente dentro de los rangos de nutrición.
+- Una página para consultar el histórico de un expediente de un paciente.
+
+El Sistema de Nutrición se creó para abordar los desafíos que enfrentan los nutriólogos al gestionar los datos de sus pacientes de manera efectiva. La motivación detrás del proyecto fue simplificar el proceso de seguimiento y análisis del progreso de los pacientes mientras se proporciona una interfaz intuitiva y visualizaciones útiles. La aplicación elimina la necesidad de llevar registros manuales y reduce errores, convirtiéndola en una herramienta confiable para los profesionales.
 
 ---
 
-## Table of Contents
+## Desarrollo en el proyecto
 
-- [Project Title](#project-title)
-- [Project Description](#project-description)
-- [Table of Contents](#table-of-contents)
-- [How to Install and Run the Project](#how-to-install-and-run-the-project)
-- [How to Use the Project](#how-to-use-the-project)
-- [License](#license)
+### Prerequisitos
 
----
+ - Python
+ - Powershell/bash
+ - MongoDB
+ - Streamlit
 
-## How to Install and Run the Project
+### Iniciando
 
-Follow these steps to set up and run NutriApp:
+Sigue estos pasos para configurar y ejecutar el Sistema de Nutrición:
 
-1. **Clone the repository:**
+1. **Clona el repositorio:**
    ```bash
-   git clone [repository URL]
+   git clone https://github.com/ZaidDeAnda/sistema-nutricion.git
    ```
 
-2. **Navigate to the project directory:**
+2. **Navega al directorio del proyecto:**
    ```bash
-   cd [project-folder]
+   cd ruta/al/proyecto/sistema-nutricion
    ```
 
-3. **Set up the environment variables:**
-   - Create a `.env` file
-   - Example:
-     ```env
-     MONGO_URI=<your-mongo-uri>
-     ```
+### Instalación
 
-4. **Install dependencies:**
+1. **Crea un entorno virtual de Python**
    ```bash
+   python3 -m venv venv
+   ```
+
+2. **Accede al entorno virtual:**
+   Para Linux/Mac:
+   ```bash
+   source venv/bin/activate
+   ```
+   Para Windows:
+   ```bash
+   source venv/Scripts/activate
+   ```
+
+3. **Instala los requisitos:**
+     ```bash
    pip install -r requirements.txt
    ```
 
-5. **Run the application:**
+### Ejecución
+
+1. **Ejecuta la aplicación:**
    ```bash
-   streamlit run anadir_paciente.py
+   streamlit run app.py
    ```
 
 ---
 
-## How to Use the Project
+## Uso del Proyecto
 
-1. **Register New Patients:**
-   - Navigate to the **Añadir Paciente** page.
-   - Fill in basic information and initial weight status.
-   - Click **Submit** to save the record in MongoDB.
+1. **Registrar nuevos pacientes:**
+   - Navega a la página **Añadir Paciente**.
+   - Completa la información básica.
+   - Haz clic en **Submit** para guardar el registro en la base de datos.
 
-2. **Update Parameters of a Patient:**
-   - Navigate to the **Añadir Consulta** page.
-   - View a table of all registered patients (showing names and the date of their last record).
-   - Use the box to select a patient.
-   - Enter updated metrics.
-   - Click **Actualizar datos** to save the new record.
-   - A comparison between the last and current record will be displayed below.
+2. **Actualizar parámetros de un paciente:**
+   - Navega a la página **Añadir Consulta**.
+   - Visualiza una tabla con todos los pacientes registrados (mostrando nombres y la fecha de su último registro).
+   - Selecciona un paciente.
+   - Introduce los parámetros actualizadas.
+   - Haz clic en **Actualizar datos** para guardar el nuevo registro.
+   - Se mostrará una comparación entre el último registro y el recién ingresado.
 
-3. **View Historical Data:**
-   - Navigate to the **Histórico** page.
-   - Access detailed progress history for each patient.
-   - View trends and changes in metrics like weight, fat, muscle, and BMI over time.
-   - Visualizations provide insights into progress and whether metrics are within recommended ranges.
+3. **Ver datos históricos:**
+   - Navega a la página **Histórico**.
+   - Accede al historial de progreso de cada paciente.
+
+---
+
+## Contacto
+
+- Zaid De Anda - https://github.com/ZaidDeAnda
+- Project Link: https://github.com/ZaidDeAnda/sistema-nutricion.git
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).  
-See the `LICENSE` file for more details.
+Este proyecto posee la licencia [MIT License](LICENSE).  
+Ve el archivo `LICENSE` para más detalles.
 
 ---
