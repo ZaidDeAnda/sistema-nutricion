@@ -50,8 +50,7 @@ El Sistema de Nutrición se creó para abordar los desafíos que enfrentan los n
 
 ### Prerequisitos
 
- - Python
- - Powershell/bash
+ - Python (v. 1.4.3)
  - MongoDB
  - Streamlit
 
@@ -83,7 +82,7 @@ Sigue estos pasos para configurar y ejecutar el Sistema de Nutrición:
    ```
    Para Windows:
    ```bash
-   source venv/Scripts/activate
+   source venv\Scripts\activate
    ```
 
 3. **Instala los requisitos:**
@@ -103,20 +102,21 @@ Sigue estos pasos para configurar y ejecutar el Sistema de Nutrición:
 ## Uso del Proyecto
 
 1. **Registrar nuevos pacientes:**
-   - Navega a la página **Añadir Paciente**.
-   - Completa la información básica.
+   - En la página **Añadir Paciente**.
+   - Llena la información con los datos del nuevo paciente.
    - Haz clic en **Submit** para guardar el registro en la base de datos.
 
 2. **Actualizar parámetros de un paciente:**
-   - Navega a la página **Añadir Consulta**.
-   - Visualiza una tabla con todos los pacientes registrados (mostrando nombres y la fecha de su último registro).
-   - Selecciona un paciente.
+   - En la página **Añadir Consulta**.
+   - Selecciona un paciente dentro de la lista de los registros.
    - Introduce los parámetros actualizadas.
    - Haz clic en **Actualizar datos** para guardar el nuevo registro.
+   - Llena la información con los datos nuevos del paciente seleccionado.
+   - Haz click en  **Comparar datos** para actualizar y comparar el histórico del paciente.
    - Se mostrará una comparación entre el último registro y el recién ingresado.
 
 3. **Ver datos históricos:**
-   - Navega a la página **Histórico**.
+   - En la página **Histórico**.
    - Accede al historial de progreso de cada paciente.
 
 ---
