@@ -91,8 +91,17 @@ Sigue estos pasos para configurar y ejecutar el Sistema de Nutrición:
    ```
 
 ### Ejecución
+1. **Asegúrate de contar con un archivo `config.yaml`:**
+   - Este archivo debe incluir las credenciales correspondientes.
+   - Ejemplo del contenido del archivo `config.yaml`:
+     ```yaml
+     db.mongo:
+      user: 'xxxxxx'
+      password: 'xxxxx'
+      cluster: 'xxxxx'
+     ```
 
-1. **Ejecuta la aplicación:**
+2. **Ejecuta la aplicación:**
    ```bash
    streamlit run app.py
    ```
