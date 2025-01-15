@@ -3,6 +3,8 @@ import pymongo
 import streamlit as st
 from datetime import datetime
 
+from utils.config import Config
+
 def get_mongo_client():
     """Get the mongo client and store it in cache.
         
@@ -11,10 +13,17 @@ def get_mongo_client():
         client
             The mongo client connected to the database.
         """
-    user = st.secrets["db_user"]
-    password = st.secrets["db_pwd"]
-    cluster = st.secrets["db_cluster"]
-    client = pymongo.MongoClient(f"mongodb+srv://{user}:{password}@{cluster}/?retryWrites=true&w=majority")
+    try:
+        user = st.secrets["db_user"]
+        password = st.secrets["db_pwd"]
+        cluster = st.secrets["db_cluster"]
+    except:
+        config = Config()
+        secrets = config.get_config()['db_mongo']
+        user = secrets['user']
+        password = secrets['password']
+        cluster = secrets['cluster']
+        client = pymongo.MongoClient(f"mongodb+srv://{user}:{password}@{cluster}/?retryWrites=true&w=majority")
     return client
 
 def create_dataframe_from_cursor(cursor):

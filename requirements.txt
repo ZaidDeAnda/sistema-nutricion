@@ -3,3 +3,4 @@ streamlit
 pymongo
 pyyaml
 dnspython
+numpy==1.26.4
